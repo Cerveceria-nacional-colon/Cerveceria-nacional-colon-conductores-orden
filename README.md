@@ -320,7 +320,7 @@ tbody td{padding:11px 11px;white-space:nowrap;}
 // ╔══════════════════════════════════════════════════════════════╗
 // ║  REEMPLAZA CON LA URL DE TU APPS SCRIPT DE ASISTENCIA       ║
 // ╚══════════════════════════════════════════════════════════════╝
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/TU_URL_ASISTENCIA_AQUI/exec';
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyUb_8nGDWTbcTxYuQiOTZKlQUIMpCXNV6ZcU5CaYuOXkwRmJK-VZDrV7FI_5ZWSFQf/exec';
 
 // ===== CONFIG =====
 const HORA_ENTRADA   = 7;
