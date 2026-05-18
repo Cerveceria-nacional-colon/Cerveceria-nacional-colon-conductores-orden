@@ -318,7 +318,7 @@ const HORA_ENTRADA   = 7;
 const TOLERANCIA_MIN = 5;
 const CLAVE          = '1234';
 const CONDUCTORES    = [
-  'Jonathan Perea','Pedro Ulloa','Martín Clark',
+  'Jonathan Perea','Pedro Ulloa','Marvin Clark',
   'Humberto Vásquez','William De Gracia','Jaime Hernández',
   'Juan Ruiz','Fredy Campos','Ernesto Escobar'
 ];
