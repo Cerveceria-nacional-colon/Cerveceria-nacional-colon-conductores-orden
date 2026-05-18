@@ -20,7 +20,6 @@
 *{margin:0;padding:0;box-sizing:border-box;}
 body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh;}
 
-/* COLABORADOR */
 #vistaColaborador{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:24px 16px;background:linear-gradient(160deg,#eff6ff 0%,#f0fdf4 100%);}
 .register-card{background:var(--white);border-radius:24px;padding:32px 26px;width:100%;max-width:400px;box-shadow:var(--shadow-lg);border:1px solid var(--border);}
 .brand{display:flex;flex-direction:column;align-items:center;gap:8px;margin-bottom:22px;}
@@ -51,7 +50,6 @@ body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--ink);min-
 .sv-link a{color:#aaa;text-decoration:none;}
 .sv-link a:hover{color:var(--accent);}
 
-/* SUPERVISOR */
 #vistaSupervisor{display:none;min-height:100vh;background:var(--bg);}
 .sv-header{background:var(--white);border-bottom:1px solid var(--border);padding:0 20px;display:flex;align-items:center;justify-content:space-between;height:58px;position:sticky;top:0;z-index:100;}
 .sv-logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:0.95rem;}
@@ -163,7 +161,6 @@ tbody td{padding:11px 11px;white-space:nowrap;}
 </head>
 <body>
 
-<!-- COLABORADOR -->
 <div id="vistaColaborador">
   <div class="register-card">
     <div class="brand">
@@ -191,7 +188,7 @@ tbody td{padding:11px 11px;white-space:nowrap;}
     </div>
     <div class="field">
       <label>Número OP</label>
-      <input type="text" id="inputOP" placeholder="Ej: OP-001" autocomplete="off"
+      <input type="text" id="inputOP" placeholder="Ej: 89100001" autocomplete="off"
         onkeydown="if(event.key==='Enter') registrar()">
     </div>
     <button class="btn-register" onclick="registrar()">✅ Registrar entrada</button>
@@ -204,7 +201,6 @@ tbody td{padding:11px 11px;white-space:nowrap;}
   </div>
 </div>
 
-<!-- SUPERVISOR -->
 <div id="vistaSupervisor">
   <div class="sv-header">
     <div class="sv-logo">
@@ -225,7 +221,6 @@ tbody td{padding:11px 11px;white-space:nowrap;}
       <button class="sv-tab" onclick="goSvTab('asistencia',this)">👷 Asistencia</button>
     </div>
 
-    <!-- TAB TIEMPO -->
     <div id="svPanel-tiempo" class="sv-panel active">
       <div class="cron-card">
         <div class="cron-title">⏱ Cronómetro de Jornada</div>
@@ -250,19 +245,18 @@ tbody td{padding:11px 11px;white-space:nowrap;}
       </div>
     </div>
 
-    <!-- TAB ASISTENCIA -->
     <div id="svPanel-asistencia" class="sv-panel">
       <div class="stats-row">
-        <div class="stat"><div class="stat-n">Total hoy</div><div class="stat-v c-blue"   id="sTotal">0</div></div>
-        <div class="stat"><div class="stat-n">A tiempo</div> <div class="stat-v c-green"  id="sTiempo">0</div></div>
-        <div class="stat"><div class="stat-n">Tarde</div>    <div class="stat-v c-yellow" id="sTarde">0</div></div>
+        <div class="stat"><div class="stat-n">Total hoy</div><div class="stat-v c-blue" id="sTotal">0</div></div>
+        <div class="stat"><div class="stat-n">A tiempo</div><div class="stat-v c-green" id="sTiempo">0</div></div>
+        <div class="stat"><div class="stat-n">Tarde</div><div class="stat-v c-yellow" id="sTarde">0</div></div>
         <div class="stat"><div class="stat-n">Verificados</div><div class="stat-v c-purple" id="sVerif">0</div></div>
       </div>
       <div class="sv-card">
         <div class="sv-card-header">
           <span class="sv-card-title">Registros de entrada</span>
           <div style="display:flex;gap:8px;flex-wrap:wrap;">
-            <button class="btn-sm green"  onclick="exportExcel()">⬇ Exportar Excel</button>
+            <button class="btn-sm green" onclick="exportExcel()">⬇ Exportar Excel</button>
             <button class="btn-sm danger" onclick="clearRecs()">🗑 Limpiar</button>
           </div>
         </div>
@@ -279,7 +273,7 @@ tbody td{padding:11px 11px;white-space:nowrap;}
           <table>
             <thead><tr>
               <th>#</th><th>Nombre</th><th>N° OP</th><th>Entrada</th><th>Estado</th>
-              <th>Fin Matinal</th><th>Camión</th><th>Ruta</th><th>Hora Verif.</th><th>Tiempo desde 7AM</th><th>Fecha</th>
+              <th>Fin Matinal</th><th>Camión</th><th>Ruta</th><th>Hora Verif.</th><th>Tiempo 7AM</th><th>Fecha</th>
             </tr></thead>
             <tbody id="tBody"></tbody>
           </table>
@@ -289,7 +283,7 @@ tbody td{padding:11px 11px;white-space:nowrap;}
         <div class="sv-card-header"><span class="sv-card-title">🚛 Resumen por Conductor</span></div>
         <div class="tbl-wrap">
           <table>
-            <thead><tr><th>Conductor</th><th>Camión</th><th>Ruta</th><th>Hora Verificación</th><th>Tiempo desde 7AM</th><th>Estado</th></tr></thead>
+            <thead><tr><th>Conductor</th><th>Camión</th><th>Ruta</th><th>Hora Verif.</th><th>Tiempo 7AM</th><th>Estado</th></tr></thead>
             <tbody id="tBodyConductores"></tbody>
           </table>
         </div>
@@ -298,7 +292,6 @@ tbody td{padding:11px 11px;white-space:nowrap;}
   </div>
 </div>
 
-<!-- Modal Login -->
 <div id="modalLogin" class="modal-bg hidden">
   <div class="modal">
     <div class="modal-icon">🔐</div>
@@ -317,12 +310,10 @@ tbody td{padding:11px 11px;white-space:nowrap;}
 <div id="toast"></div>
 
 <script>
-// ╔══════════════════════════════════════════════════════════════╗
-// ║  REEMPLAZA CON LA URL DE TU APPS SCRIPT DE ASISTENCIA       ║
-// ╚══════════════════════════════════════════════════════════════╝
-const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbyUb_8nGDWTbcTxYuQiOTZKlQUIMpCXNV6ZcU5CaYuOXkwRmJK-VZDrV7FI_5ZWSFQf/exec';
+// ── URL del Apps Script (ya insertada) ────────────────────────
+const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwdO0DCn6ofHuCmTt5aj-CGzpnQqqE0C5okryfi-gjAis0C3ZKugSXsthgg9WgBg2gk/exec';
 
-// ===== CONFIG =====
+// ── CONFIG ────────────────────────────────────────────────────
 const HORA_ENTRADA   = 7;
 const TOLERANCIA_MIN = 5;
 const CLAVE          = '1234';
@@ -332,10 +323,9 @@ const CONDUCTORES    = [
   'Juan Ruiz','Fredy Campos','Ernesto Escobar'
 ];
 
-// Reset diario
-(function checkDailyReset(){
-  const hoy=new Date().toDateString();
-  const ult=localStorage.getItem('att_ultimo_dia');
+// Reset diario automático
+(function(){
+  const hoy=new Date().toDateString(), ult=localStorage.getItem('att_ultimo_dia');
   if(ult&&ult!==hoy){localStorage.removeItem('att_jornada');localStorage.removeItem('att_verifs');}
   localStorage.setItem('att_ultimo_dia',hoy);
 })();
@@ -348,6 +338,7 @@ function saveRecs()   {localStorage.setItem('att_recs',   JSON.stringify(records
 function saveJornada(){localStorage.setItem('att_jornada',JSON.stringify(jornada));}
 function saveVerifs() {localStorage.setItem('att_verifs', JSON.stringify(verifs));}
 
+// ── RELOJES ───────────────────────────────────────────────────
 setInterval(tickAll,1000); tickAll();
 function tickAll(){
   const n=new Date();
@@ -363,16 +354,16 @@ function tickAll(){
   }
   if(jornada){
     const ini=new Date(jornada.inicioTs),fin=jornada.cierreTs?new Date(jornada.cierreTs):n;
-    const diff=Math.floor((fin-ini)/1000);
     const el=document.getElementById('cronBig');
-    el.textContent=formatSeg(diff);
+    el.textContent=formatSeg(Math.floor((fin-ini)/1000));
     el.className='cron-big'+(jornada.cierreTs?' stopped':'');
   }
 }
-function formatSeg(s){return[Math.floor(s/3600),Math.floor((s%3600)/60),s%60].map(v=>v.toString().padStart(2,'0')).join(':');}
+function formatSeg(s){return[Math.floor(s/3600),Math.floor((s%3600)/60),s%60].map(v=>String(v).padStart(2,'0')).join(':');}
 function getEstado(d){return d.getHours()*60+d.getMinutes()<=HORA_ENTRADA*60+TOLERANCIA_MIN?'A tiempo':'Tarde';}
 function getRetraso(d){return Math.max(0,d.getHours()*60+d.getMinutes()-(HORA_ENTRADA*60+TOLERANCIA_MIN));}
 
+// ── LOGIN ─────────────────────────────────────────────────────
 function abrirLogin(){
   document.getElementById('claveInput').value='';
   document.getElementById('claveError').style.display='none';
@@ -401,7 +392,7 @@ function goSvTab(id,btn){
   if(id==='tiempo'){syncCronUI();renderConductores();}
 }
 
-// ── REGISTRAR → guarda localmente Y envía a Google Sheets ────
+// ── REGISTRAR → local + Google Sheets (no-cors fix) ───────────
 async function registrar(){
   const nombre=document.getElementById('inputNombre').value.trim();
   const op=document.getElementById('inputOP').value.trim();
@@ -418,18 +409,20 @@ async function registrar(){
   const estado=getEstado(now),retraso=getRetraso(now);
   const time=now.toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
   const date=now.toLocaleDateString('es-MX');
-  const rec={id:Date.now(),nombre,op:op.toUpperCase(),estado,retraso,date,time,ts:now.toISOString()};
-  records.unshift(rec);saveRecs();
+  records.unshift({id:Date.now(),nombre,op:op.toUpperCase(),estado,retraso,date,time,ts:now.toISOString()});
+  saveRecs();
   if(estado==='A tiempo')mostrarRes('ok','✅ ¡Entrada registrada!',`Bienvenido/a ${nombre} · ${time}`);
   else mostrarRes('warn',`⚠️ Tarde ${retraso} min`,`${nombre} · ${time}`);
   document.getElementById('inputNombre').value='';
   document.getElementById('inputOP').value='';
-  // Enviar a Google Sheets en segundo plano
+
+  // Enviar a Sheets con mode:'no-cors' (fix CORS de GitHub Pages → Apps Script)
   try{
     const p=new URLSearchParams({action:'add',nombre,op:op.toUpperCase(),estado,retraso,time,date});
-    await fetch(APPS_SCRIPT_URL+'?'+p.toString());
-  }catch(e){console.warn('Sheets no disponible:',e);}
+    fetch(APPS_SCRIPT_URL+'?'+p.toString(),{method:'GET',mode:'no-cors'});
+  }catch(e){console.warn('Sheets:',e);}
 }
+
 function mostrarRes(tipo,msg,sub){
   const b=document.getElementById('resultBox');
   b.className='result-box '+tipo;b.style.display='block';
@@ -438,23 +431,25 @@ function mostrarRes(tipo,msg,sub){
   clearTimeout(window._rt);window._rt=setTimeout(()=>b.style.display='none',5000);
 }
 
+// ── CRONÓMETRO ────────────────────────────────────────────────
 function finMatinal(){
   if(!jornada){toast('El cronómetro aún no ha iniciado (7:00 AM)','warn');return;}
   if(jornada.matinalTs){toast('Matinal ya fue registrada','warn');return;}
   if(!confirm('¿Confirmas que la matinal ha finalizado?'))return;
   jornada.matinalTs=new Date().toISOString();saveJornada();syncCronUI();
-  toast('✅ Matinal finalizada · Cronómetro sigue corriendo','ok');
+  toast('✅ Matinal finalizada','ok');
 }
 function cerrarJornada(){
   if(!jornada){toast('El cronómetro aún no ha iniciado','warn');return;}
   if(jornada.cierreTs){toast('La jornada ya fue cerrada','warn');return;}
-  if(!confirm('¿Confirmas el cierre de jornada? El cronómetro se detendrá.'))return;
+  if(!confirm('¿Confirmas el cierre de jornada?'))return;
   const now=new Date(),ini=new Date(jornada.inicioTs);
-  jornada.cierreTs=now.toISOString();jornada.tiempoTotal=formatSeg(Math.floor((now-ini)/1000));
+  jornada.cierreTs=now.toISOString();
+  jornada.tiempoTotal=formatSeg(Math.floor((now-ini)/1000));
   saveJornada();syncCronUI();
   document.getElementById('bannerMatinal').style.display='none';
   document.getElementById('bannerVerif').style.display='block';
-  toast('🏁 Jornada cerrada · Tiempo total: '+jornada.tiempoTotal,'ok');
+  toast('🏁 Jornada cerrada · '+jornada.tiempoTotal,'ok');
   renderConductoresTable();renderTable();
 }
 function syncCronUI(){
@@ -464,30 +459,39 @@ function syncCronUI(){
     label.textContent='El cronómetro inicia automáticamente a las 7:00 AM';
     btnM.disabled=true;btnC.disabled=true;
     ['ms1','ms2','ms3'].forEach(id=>{document.getElementById(id).className='milestone pending';});
-    document.getElementById('ms1time').textContent='—';document.getElementById('ms2time').textContent='—';document.getElementById('ms3time').textContent='—';
-    document.getElementById('bannerMatinal').style.display='none';document.getElementById('bannerVerif').style.display='none';return;
+    document.getElementById('ms1time').textContent='—';
+    document.getElementById('ms2time').textContent='—';
+    document.getElementById('ms3time').textContent='—';
+    document.getElementById('bannerMatinal').style.display='none';
+    document.getElementById('bannerVerif').style.display='none';
+    return;
   }
+  const fmt=ts=>new Date(ts).toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
   document.getElementById('ms1').className='milestone done';
-  document.getElementById('ms1time').textContent=new Date(jornada.inicioTs).toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit',second:'2-digit'});
-  if(jornada.matinalTs){document.getElementById('ms2').className='milestone done';document.getElementById('ms2time').textContent=new Date(jornada.matinalTs).toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit',second:'2-digit'});btnM.disabled=true;}
+  document.getElementById('ms1time').textContent=fmt(jornada.inicioTs);
+  if(jornada.matinalTs){document.getElementById('ms2').className='milestone done';document.getElementById('ms2time').textContent=fmt(jornada.matinalTs);btnM.disabled=true;}
   else{document.getElementById('ms2').className='milestone active';document.getElementById('ms2time').textContent='En curso...';btnM.disabled=false;}
-  if(jornada.cierreTs){document.getElementById('ms3').className='milestone done';document.getElementById('ms3time').textContent=new Date(jornada.cierreTs).toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit',second:'2-digit'});btnC.disabled=true;label.textContent='✅ Jornada cerrada · Tiempo total: '+jornada.tiempoTotal;}
-  else{document.getElementById('ms3').className='milestone active';document.getElementById('ms3time').textContent='Pendiente';btnC.disabled=false;label.textContent=jornada.matinalTs?'🚛 Verificando camiones — cronómetro corriendo':'⏳ Esperando fin de matinal — cronómetro corriendo';}
+  if(jornada.cierreTs){document.getElementById('ms3').className='milestone done';document.getElementById('ms3time').textContent=fmt(jornada.cierreTs);btnC.disabled=true;label.textContent='✅ Jornada cerrada · '+jornada.tiempoTotal;}
+  else{document.getElementById('ms3').className='milestone active';document.getElementById('ms3time').textContent='Pendiente';btnC.disabled=false;label.textContent=jornada.matinalTs?'🚛 Verificando camiones — cronómetro corriendo':'⏳ Esperando fin de matinal';}
   document.getElementById('bannerMatinal').style.display=(!jornada.cierreTs)?'block':'none';
   document.getElementById('bannerVerif').style.display=jornada.cierreTs?'block':'none';
 }
 function resetTodo(){
-  if(!confirm('¿Reiniciar cronómetro y verificaciones? Los registros de asistencia NO se borran.'))return;
-  jornada=null;verifs={};saveJornada();saveVerifs();syncCronUI();renderConductores();updateStats();renderConductoresTable();toast('🔄 Reiniciado','info');
+  if(!confirm('¿Reiniciar cronómetro y verificaciones?'))return;
+  jornada=null;verifs={};saveJornada();saveVerifs();
+  syncCronUI();renderConductores();updateStats();renderConductoresTable();
+  toast('🔄 Reiniciado','info');
 }
+
+// ── CONDUCTORES ───────────────────────────────────────────────
 function renderConductores(){
   const grid=document.getElementById('conductoresGrid');
   const hab=jornada&&!jornada.cierreTs;
   grid.innerHTML=CONDUCTORES.map(nombre=>{
     const v=verifs[nombre],ini=nombre.split(' ').map(p=>p[0]).join('').slice(0,2).toUpperCase();
-    if(v)return`<div class="conductor-card verificado"><div class="conductor-header"><div class="conductor-avatar">${ini}</div><div><div class="conductor-nombre">${nombre}</div><div class="conductor-status">✅ Verificado</div></div></div><div class="verif-info">🚛 ${v.camion} &nbsp;·&nbsp; 📍 ${v.ruta}<br>⏰ ${v.horaVerif} &nbsp;·&nbsp; ⏱ ${v.tiempoDesde7}</div></div>`;
+    if(v)return`<div class="conductor-card verificado"><div class="conductor-header"><div class="conductor-avatar">${ini}</div><div><div class="conductor-nombre">${nombre}</div><div class="conductor-status">✅ Verificado</div></div></div><div class="verif-info">🚛 ${v.camion} · 📍 ${v.ruta}<br>⏰ ${v.horaVerif} · ⏱ ${v.tiempoDesde7}</div></div>`;
     const dis=!hab?'disabled':'';
-    return`<div class="conductor-card pendiente"><div class="conductor-header"><div class="conductor-avatar">${ini}</div><div><div class="conductor-nombre">${nombre}</div><div class="conductor-status" style="color:var(--orange);">⏳ Pendiente</div></div></div><div class="verif-fields"><input type="text" placeholder="N° Camión" id="camion-${san(nombre)}" ${dis}><input type="text" placeholder="Ruta" id="ruta-${san(nombre)}" ${dis}></div><button class="btn-verif pendiente" ${dis} onclick="verificarConductor('${nombre}')">✅ Marcar verificado</button>${!hab?'<div style="font-size:0.72rem;color:#aaa;margin-top:6px;text-align:center;">Disponible cuando inicie la jornada</div>':''}</div>`;
+    return`<div class="conductor-card pendiente"><div class="conductor-header"><div class="conductor-avatar">${ini}</div><div><div class="conductor-nombre">${nombre}</div><div class="conductor-status" style="color:var(--orange);">⏳ Pendiente</div></div></div><div class="verif-fields"><input type="text" placeholder="N° Camión" id="camion-${san(nombre)}" ${dis}><input type="text" placeholder="Ruta" id="ruta-${san(nombre)}" ${dis}></div><button class="btn-verif pendiente" ${dis} onclick="verificarConductor('${nombre}')">✅ Marcar verificado</button>${!hab?'<div style="font-size:0.72rem;color:#aaa;margin-top:6px;text-align:center;">Disponible al iniciar la jornada</div>':''}</div>`;
   }).join('');
 }
 function san(n){return n.replace(/\s+/g,'-').replace(/[^a-zA-Z0-9-]/g,'');}
@@ -499,8 +503,11 @@ function verificarConductor(nombre){
   if(!ruta){toast('Ingresa la ruta','fail');return;}
   const now=new Date(),ini=new Date(jornada.inicioTs);
   verifs[nombre]={camion,ruta,horaVerif:now.toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit',second:'2-digit'}),tiempoDesde7:formatSeg(Math.floor((now-ini)/1000)),ts:now.toISOString()};
-  saveVerifs();renderConductores();updateStats();renderConductoresTable();toast('✅ '+nombre+' verificado','ok');
+  saveVerifs();renderConductores();updateStats();renderConductoresTable();
+  toast('✅ '+nombre+' verificado','ok');
 }
+
+// ── TABLAS ────────────────────────────────────────────────────
 function renderTable(){
   const ft=document.getElementById('fText').value.toLowerCase(),fd=document.getElementById('fDate').value,fs=document.getElementById('fStatus').value;
   const filtered=records.filter(r=>(!ft||r.nombre.toLowerCase().includes(ft)||r.op.toLowerCase().includes(ft))&&(!fd||r.ts.startsWith(fd))&&(!fs||r.estado===fs));
@@ -510,7 +517,7 @@ function renderTable(){
     const pill=r.estado==='A tiempo'?`<span class="pill pill-green">✅ A tiempo</span>`:`<span class="pill pill-yellow">⚠️ Tarde ${r.retraso}m</span>`;
     const fm=jornada?.matinalTs?new Date(jornada.matinalTs).toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit'}):'—';
     const esC=CONDUCTORES.find(c=>c.toLowerCase()===r.nombre.toLowerCase()),v=esC?verifs[esC]:null;
-    return`<tr><td style="color:var(--ink2);font-family:'DM Mono',monospace;font-size:0.73rem;">${i+1}</td><td><strong>${r.nombre}</strong></td><td style="font-family:'DM Mono',monospace;font-size:0.78rem;color:var(--accent);">${r.op}</td><td style="font-family:'DM Mono',monospace;font-size:0.82rem;font-weight:600;color:var(--green);">${r.time}</td><td>${pill}</td><td style="font-family:'DM Mono',monospace;font-size:0.78rem;">${fm}</td><td>${v?v.camion:'—'}</td><td>${v?v.ruta:'—'}</td><td style="font-family:'DM Mono',monospace;font-size:0.78rem;">${v?v.horaVerif:'—'}</td><td>${v?`<span class="pill pill-purple">⏱ ${v.tiempoDesde7}</span>`:'—'}</td><td style="font-family:'DM Mono',monospace;font-size:0.75rem;color:var(--ink2);">${r.date}</td></tr>`;
+    return`<tr><td style="color:var(--ink2);font-size:0.73rem;">${i+1}</td><td><strong>${r.nombre}</strong></td><td style="font-family:'DM Mono',monospace;color:var(--accent);">${r.op}</td><td style="font-family:'DM Mono',monospace;font-weight:600;color:var(--green);">${r.time}</td><td>${pill}</td><td style="font-family:'DM Mono',monospace;">${fm}</td><td>${v?v.camion:'—'}</td><td>${v?v.ruta:'—'}</td><td style="font-family:'DM Mono',monospace;">${v?v.horaVerif:'—'}</td><td>${v?`<span class="pill pill-purple">⏱ ${v.tiempoDesde7}</span>`:'—'}</td><td style="font-size:0.75rem;color:var(--ink2);">${r.date}</td></tr>`;
   }).join('');
 }
 function renderConductoresTable(){
@@ -529,13 +536,26 @@ function updateStats(){
 function clearRecs(){if(!confirm('¿Borrar TODOS los registros?'))return;records=[];saveRecs();renderTable();updateStats();toast('Registros eliminados','fail');}
 function exportExcel(){
   if(!records.length){toast('No hay registros','fail');return;}
-  const BOM='\uFEFF';let csv=BOM+'REGISTRO DE ASISTENCIA · CERVECERÍA NACIONAL\n';
-  if(jornada){csv+=`Inicio:,${new Date(jornada.inicioTs).toLocaleTimeString('es-MX')},Fin matinal:,${jornada.matinalTs?new Date(jornada.matinalTs).toLocaleTimeString('es-MX'):'—'},Cierre:,${jornada.cierreTs?new Date(jornada.cierreTs).toLocaleTimeString('es-MX'):'—'},Total:,${jornada.tiempoTotal||'—'}\n\n`;}
-  csv+=['#','Nombre','N° OP','Hora Entrada','Estado','Min Retraso','Fin Matinal','Camión','Ruta','Hora Verificación','Tiempo desde 7AM','Fecha'].join(',')+'\n';
-  records.forEach((r,i)=>{const fm=jornada?.matinalTs?new Date(jornada.matinalTs).toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit'}):'';const esC=CONDUCTORES.find(c=>c.toLowerCase()===r.nombre.toLowerCase()),v=esC?verifs[esC]:null;csv+=[i+1,`"${r.nombre}"`,r.op,r.time,r.estado,r.retraso||0,fm,v?v.camion:'',v?v.ruta:'',v?v.horaVerif:'',v?v.tiempoDesde7:'',r.date].join(',')+'\n';});
-  const a=document.createElement('a');a.download=`Asistencia_${new Date().toLocaleDateString('es-MX').replace(/\//g,'-')}.csv`;a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));a.click();toast('✅ Excel exportado','ok');
+  let csv='\uFEFF'+'REGISTRO DE ASISTENCIA · CERVECERÍA NACIONAL\n';
+  if(jornada){csv+=`Inicio:,${new Date(jornada.inicioTs).toLocaleTimeString('es-MX')},Matinal:,${jornada.matinalTs?new Date(jornada.matinalTs).toLocaleTimeString('es-MX'):'—'},Cierre:,${jornada.cierreTs?new Date(jornada.cierreTs).toLocaleTimeString('es-MX'):'—'},Total:,${jornada.tiempoTotal||'—'}\n\n`;}
+  csv+=['#','Nombre','N° OP','Hora','Estado','Min Tarde','Fin Matinal','Camión','Ruta','Hora Verif.','Tiempo 7AM','Fecha'].join(',')+'\n';
+  records.forEach((r,i)=>{
+    const fm=jornada?.matinalTs?new Date(jornada.matinalTs).toLocaleTimeString('es-MX',{hour:'2-digit',minute:'2-digit'}):'';
+    const esC=CONDUCTORES.find(c=>c.toLowerCase()===r.nombre.toLowerCase()),v=esC?verifs[esC]:null;
+    csv+=[i+1,`"${r.nombre}"`,r.op,r.time,r.estado,r.retraso||0,fm,v?v.camion:'',v?v.ruta:'',v?v.horaVerif:'',v?v.tiempoDesde7:'',r.date].join(',')+'\n';
+  });
+  const a=document.createElement('a');
+  a.download=`Asistencia_${new Date().toLocaleDateString('es-MX').replace(/\//g,'-')}.csv`;
+  a.href=URL.createObjectURL(new Blob([csv],{type:'text/csv;charset=utf-8;'}));
+  a.click();toast('✅ Exportado','ok');
 }
-function toast(msg,type='ok'){const t=document.getElementById('toast');t.textContent=msg;t.className='show '+type;clearTimeout(t._t);t._t=setTimeout(()=>t.className='',3500);}
+
+// ── TOAST ─────────────────────────────────────────────────────
+function toast(msg,type='ok'){
+  const t=document.getElementById('toast');
+  t.textContent=msg;t.className='show '+type;
+  clearTimeout(t._t);t._t=setTimeout(()=>t.className='',3500);
+}
 
 syncCronUI();
 </script>
